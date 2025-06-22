@@ -5,7 +5,7 @@ const Header = () => {
       <h2 className="text-4xl font-bold font-sans max-sm:hidden text-slate-100" >Yadhidya</h2>
      
       <nav>
-        <ul className="flex flex-wrap gap-9 text-5xl  md:text-5xl max-md:hidden font-medium text-gray-200">
+        <ul className="flex flex-wrap gap-9 text-xl  md:text-xl max-md:hidden font-medium text-gray-200">
           <li><a href="#about_me" className="hover:text-gray-500 transition">About me</a></li>
           <li><a href="#skills" className="hover:text-gray-500 transition">Skills</a></li>
           <li><a href="#CareerHighlights" className="hover:text-gray-500 transition">Career Highlights</a></li>
