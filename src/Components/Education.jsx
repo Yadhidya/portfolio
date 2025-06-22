@@ -1,9 +1,11 @@
-import React from 'react';
+import veltech from "./images/education/veltech.png";
+import vidyadeep from "./images/education/vidyadeep.jpeg";
+import andhra from "./images/education/andhra.webp";
 
 const Education = () => {
   const education = [
     {
-      logo: "/education/veltech.png",
+      logo: veltech,
       degree: "B.Tech - Computer Science Engineering",
       institution: "Veltech University, Chennai",
       duration: "June 2024 – Present",
@@ -12,7 +14,7 @@ const Education = () => {
         "Currently pursuing B.Tech in Computer Science at Veltech University. Active participant in coding competitions, focused on DSA, Web Development ."
     },
     {
-      logo: "/education/andhra.webp",
+      logo: andhra,
       degree: "Diploma - Computer Science Engineering",
       institution: "Andhra Polytechnic, Kakinada",
       duration: "2021 – 2024",
@@ -22,7 +24,7 @@ const Education = () => {
     }
     ,
     {
-      logo: "/education/vidyadeep.jpeg",
+      logo: vidyadeep,
       degree: "Schooling",
       institution: "Vidyadeep English Medium High School,Nidadavole",
       duration: "2021",
