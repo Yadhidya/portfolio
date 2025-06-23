@@ -9,28 +9,32 @@ import Skills from './Components/Skills';
 
 function App() {
   return (
-    <div className="flex flex-col w-full min-h-screen ">
+    <div className="flex flex-col min-h-screen w-full text-white ">
+    
       <Header />
-      <main className="pt-28 px-8">
-        <section>
-          <AboutMe/>
+
+      
+      <main className="pt-20 px-4 sm:px-6 md:px-10 lg:px-16 max-w-screen-xl mx-auto w-full">
+        <section className="mb-12">
+          <AboutMe />
         </section>
-        <section>
-          <Skills/>
+        <section className="mb-12">
+          <Skills />
         </section>
-        <section>
-          <Career/>
+        <section className="mb-12">
+          <Career />
         </section>
-        <section>
-          <Achievements/>
+        <section className="mb-12">
+          <Achievements />
         </section>
-         <section>
-          <Education/>
+        <section className="mb-12">
+          <Education />
         </section>
       </main>
-      <footer>
-          <ContactMe/>
-          </footer>
+
+      <footer className="px-4 sm:px-6 md:px-10 lg:px-16 mt-auto w-full">
+        <ContactMe />
+      </footer>
     </div>
   );
 }

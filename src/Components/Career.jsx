@@ -7,51 +7,41 @@ const Career = () => {
   const [selected, setSelected] = useState('projects');
 
   const renderSection = () => {
-    if (selected === 'projects') {
-      return <Projects />;
-    } else if (selected === 'internships') {
-      return <Internships />;
-    } else if (selected === 'certifications') {
-      return <Certifications />;
-    }
+    if (selected === 'projects') return <Projects />;
+    if (selected === 'internships') return <Internships />;
+    if (selected === 'certifications') return <Certifications />;
   };
 
   return (
-    <section id="CareerHighlights" className='w-full py-4 bg-black text-white'>
-      <h2 className='text-5xl font-bold text-center text-gray-100 my-12'>
+    <section
+      id="CareerHighlights"
+      className="w-full py-16 px-4 sm:px-6 md:px-10 bg-black text-white"
+    >
+      <h2 className="text-4xl sm:text-5xl font-bold text-center text-gray-100 mb-12">
         Career & Highlights
       </h2>
 
       {/* Filter Buttons */}
-      <div className='flex justify-center gap-4 mb-8'>
-        <button
-          onClick={() => setSelected('projects')}
-          className={`px-4 py-2 rounded-md font-medium ${
-            selected === 'projects' ? 'bg-blue-600' : 'bg-gray-700'
-          }`}
-        >
-          Projects
-        </button>
-        <button
-          onClick={() => setSelected('internships')}
-          className={`px-4 py-2 rounded-md font-medium ${
-            selected === 'internships' ? 'bg-blue-600' : 'bg-gray-700'
-          }`}
-        >
-          Internships
-        </button>
-        <button
-          onClick={() => setSelected('certifications')}
-          className={`px-4 py-2 rounded-md font-medium ${
-            selected === 'certifications' ? 'bg-blue-600' : 'bg-gray-700'
-          }`}
-        >
-          Certifications
-        </button>
+      <div className="flex flex-wrap justify-center gap-4 mb-10">
+        {['projects', 'internships', 'certifications'].map((item) => (
+          <button
+            key={item}
+            onClick={() => setSelected(item)}
+            className={`px-4 py-2 rounded-md font-medium transition duration-300 ease-in-out
+              ${
+                selected === item
+                  ? 'bg-indigo-700 text-white'
+                  : 'bg-gray-800 hover:bg-gray-700 text-gray-300'
+              }
+              focus:outline-none focus:ring-2 focus:ring-indigo-500`}
+          >
+            {item.charAt(0).toUpperCase() + item.slice(1)}
+          </button>
+        ))}
       </div>
 
-      {/* Render Section */}
-      <div className='max-w-6xl mx-auto'>{renderSection()}</div>
+      {/* Render Section Content */}
+      <div className="max-w-6xl mx-auto">{renderSection()}</div>
     </section>
   );
 };

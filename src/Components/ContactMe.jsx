@@ -9,14 +9,14 @@ import {
 
 const ContactMe = () => {
   return (
-    <footer id="contact_me" className="bg-black text-white py-16 px-6">
+    <footer id="contact_me" className="bg-black text-white py-16 px-4 sm:px-6 md:px-10 border-t border-gray-700">
       <div className="max-w-4xl mx-auto text-center">
-        <h2 className="text-4xl font-bold  mb-4">Contact Me</h2>
-        <p className="text-gray-400 mb-6">
+        <h2 className="text-4xl sm:text-5xl font-bold mb-4">Contact Me</h2>
+        <p className="text-gray-400 mb-6 max-w-xl mx-auto text-base sm:text-lg">
           I'm open to new opportunities and collaborations. Feel free to connect!
         </p>
 
-        <p className="text-lg mb-6">
+        <p className="text-base sm:text-lg mb-6 break-all">
           <a
             href="mailto:ulliyadhidya6002@gmail.com"
             className="text-indigo-300 hover:text-indigo-500 transition-colors"
@@ -26,7 +26,7 @@ const ContactMe = () => {
           </a>
         </p>
 
-        <div className="flex justify-center flex-wrap gap-6 mb-8 text-2xl">
+        <div className="flex justify-center flex-wrap gap-6 mb-8 text-xl sm:text-2xl">
           <a
             href="https://github.com/yadhidya"
             target="_blank"
@@ -59,7 +59,6 @@ const ContactMe = () => {
           >
             <FaInstagram />
           </a>
-         
         </div>
 
         <p className="text-sm text-gray-600">
