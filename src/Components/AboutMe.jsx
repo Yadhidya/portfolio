@@ -29,7 +29,6 @@ const AboutMe = () => {
   className="w-full flex flex-col-reverse md:flex-row justify-between items-center px-4 sm:px-6 md:px-10 pt-10 pb-16 gap-10 md:gap-6"
 >
 
-      {/* Left Section - Text */}
       <motion.div
         className="md:w-1/2 text-center md:text-left"
         initial={{ opacity: 0, x: -100 }}
@@ -71,7 +70,6 @@ const AboutMe = () => {
         </button>
       </motion.div>
 
-      {/* Right Section - Image */}
       <motion.div
         className="md:w-1/2 flex justify-center"
         initial={{ opacity: 0, x: 100 }}

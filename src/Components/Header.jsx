@@ -25,7 +25,6 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 py-4 flex justify-between items-center">
         <h2 className="text-2xl sm:text-3xl font-bold text-slate-100">Yadhidya</h2>
 
-        {/* Desktop Menu */}
         <nav className="hidden md:block">
           <ul className="flex gap-6 text-base lg:text-lg font-medium text-gray-200">
             {navLinks.map((link) => (
@@ -38,7 +37,6 @@ const Header = () => {
           </ul>
         </nav>
 
-        {/* Hamburger Icon */}
         <div
           className="md:hidden text-white text-2xl cursor-pointer z-50"
           onClick={() => setIsOpen((prev) => !prev)}
@@ -47,7 +45,6 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div

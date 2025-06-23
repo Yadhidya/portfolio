@@ -23,7 +23,6 @@ const Achievements = () => {
         Achievements
       </h2>
 
-      {/* Responsive Toggle Buttons */}
       <div className="flex flex-wrap justify-center gap-4 mb-10">
         {Object.keys(sections).map((key) => (
           <button
@@ -38,7 +37,6 @@ const Achievements = () => {
         ))}
       </div>
 
-      {/* Dynamic Section Content with Animation */}
       <div className="max-w-6xl mx-auto min-h-[200px]">
         <AnimatePresence mode="wait">
           <motion.div
