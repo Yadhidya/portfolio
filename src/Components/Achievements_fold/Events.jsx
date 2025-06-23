@@ -69,7 +69,15 @@ const Events = () => {
           <p className="text-sm text-gray-300 mb-3">{event.desc}</p>
 
           {event.memento && (
-            <a href={`${import.meta.env.BASE_URL}${event.memento}`} target="_blank" rel="noopener noreferrer">
+            <a
+                href={
+                  event.memento.startsWith('http')
+                    ? event.memento
+                    : `${import.meta.env.BASE_URL}${event.memento}`
+                }
+                target="_blank"
+                rel="noopener noreferrer"
+              >
               <button className="mt-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 text-sm">
                 <FaFileAlt className="inline-block mr-2" />
                 View Memento
