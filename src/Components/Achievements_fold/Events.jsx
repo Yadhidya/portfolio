@@ -1,10 +1,17 @@
+import { useState, useRef } from 'react';
+import { FaFileAlt } from 'react-icons/fa';
+
+import dev from "../images/awards/dev.png";
+import lets from "../images/awards/lets.png";
 import codeathon from "../images/awards/codeathon.png";
 import comsci from "../images/awards/comsci.jpg";
 import btech from "../images/awards/btech_wallah.png";
 import Aincat from "../images/awards/AINCAT.png";
-import { FaFileAlt } from 'react-icons/fa';
 
 const Events = () => {
+  const containerRef = useRef(null);
+  const [visibleCount, setVisibleCount] = useState(3);
+
   const events = [
     {
       img: codeathon,
@@ -31,6 +38,23 @@ const Events = () => {
       memento: "/awards_links/technicalQuiz.jpg"
     },
     {
+  img: lets, 
+  name: "CodeClash – The Battle of Logic & Code",
+  organized: "Lets Code Community (via Unstop)",
+  prize: "Certificate of Excellence",
+  desc: "Received a Certificate of Excellence for showcasing grit, logical thinking, and consistent effort in CodeClash hosted on Unstop.",
+  memento: "https://unstop.com/certificate-preview/4d28c274-b2a6-4efa-840a-b20c81227f79"
+},
+{
+  img: dev, 
+  name: "CodeRush Weekly",
+  organized: "Devantra Community",
+  prize: "Certificate of Participation",
+  desc: "Participated in CodeRush Weekly organized by CGC Landran on Unstop and demonstrated dedication to problem solving and consistency.",
+  memento: "https://unstop.com/certificate-preview/9bffba09-35b7-4467-85ac-a4adce79040f"
+},
+
+    {
       img: Aincat,
       name: "AINCAT – All India Naukri Campus Test",
       organized: "Naukri Campus",
@@ -48,44 +72,66 @@ const Events = () => {
     }
   ];
 
+  const handleToggle = () => {
+    if (visibleCount >= events.length) {
+      setVisibleCount(3);
+      containerRef.current?.scrollIntoView({ behavior: "smooth" });
+    } else {
+      setVisibleCount((prev) => Math.min(prev + 3, events.length));
+    }
+  };
+
   return (
-    <div className="w-full flex flex-wrap justify-center gap-6 sm:gap-8 px-4 py-4">
-      {events.map((event, index) => (
-        <div
-          key={index}
-          className="w-full sm:w-[48%] md:w-[30%] border border-gray-700 bg-zinc-900 p-5 rounded-lg shadow-md hover:border-indigo-600 hover:shadow-indigo-500/30 transition duration-300"
-        >
-          <div className="flex items-center gap-4 mb-3">
-            <img
-              src={event.img}
-              alt={event.name}
-              className="w-[60px] h-[60px] object-contain rounded-md bg-white p-1"
-            />
-            <h3 className="text-lg font-bold text-indigo-400">{event.name}</h3>
-          </div>
+    <div ref={containerRef} className="w-full px-4 py-4">
+      <div className="flex flex-wrap justify-center gap-6 sm:gap-8">
+        {events.slice(0, visibleCount).map((event, index) => (
+          <div
+            key={index}
+            className="w-full sm:w-[48%] md:w-[30%] border border-gray-700 bg-zinc-900 p-5 rounded-lg shadow-md hover:border-indigo-600 hover:shadow-indigo-500/30 transition duration-300"
+          >
+            <div className="flex items-center gap-4 mb-3">
+              <img
+                src={event.img}
+                alt={event.name}
+                className="w-[60px] h-[60px] object-contain rounded-md bg-white p-1"
+              />
+              <h3 className="text-lg font-bold text-indigo-400">{event.name}</h3>
+            </div>
 
-          <p className="text-sm text-gray-400 mb-1">{event.organized}</p>
-          <p className="text-sm italic text-indigo-300 mb-2">{event.prize}</p>
-          <p className="text-sm text-gray-300 mb-3">{event.desc}</p>
+            <p className="text-sm text-gray-400 mb-1">{event.organized}</p>
+            <p className="text-sm italic text-indigo-300 mb-2">{event.prize}</p>
+            <p className="text-sm text-gray-300 mb-3">{event.desc}</p>
 
-          {event.memento && (
-            <a
+            {event.memento && (
+              <a
                 href={
-                  event.memento.startsWith('http')
+                  event.memento.startsWith("http")
                     ? event.memento
                     : `${import.meta.env.BASE_URL}${event.memento}`
                 }
                 target="_blank"
                 rel="noopener noreferrer"
               >
-              <button className="mt-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 text-sm">
-                <FaFileAlt className="inline-block mr-2" />
-                View Memento
-              </button>
-            </a>
-          )}
+                <button className="mt-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 text-sm">
+                  <FaFileAlt className="inline-block mr-2" />
+                  View Memento
+                </button>
+              </a>
+            )}
+          </div>
+        ))}
+      </div>
+
+      {events.length > 3 && (
+        <div className="mt-8 text-center">
+          <button
+            onClick={handleToggle}
+            className="px-6 py-2 text-white bg-indigo-600 hover:bg-indigo-700 rounded transition"
+          >
+            {visibleCount >= events.length ? "View Less" : "View More"}
+          </button>
         </div>
-      ))}
+      )}
     </div>
   );
 };

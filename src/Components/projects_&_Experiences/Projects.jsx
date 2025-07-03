@@ -1,45 +1,59 @@
+import { useState, useRef } from "react";
 import work_wagon from "../images/work_wagon.png";
 import Nike from "../images/Nike.png";
 import Face from "../images/face_detcetion.png";
 import pg from "../images/pg.png";
-import { FaGithub } from 'react-icons/fa';
+import { FaGithub } from "react-icons/fa";
+
+const projects = [
+  {
+    img: work_wagon,
+    name: "Work Wagon",
+    desc: "A web platform connecting job seekers and local shops. Includes real-time job updates and transparent status tracking.",
+    langs: "HTML , CSS , JavaScript , PHP",
+    link: "https://github.com/Yadhidya/Work-Wagon",
+  },
+  {
+    img: Face,
+    name: "Face Security Management",
+    desc: "Facial recognition-based security management system for secure and authorized access.",
+    langs: "C# , OpenCV , EmguCV , .NET",
+    link: "https://github.com/Yadhidya/Face-Face-Detection-Security-System",
+  },
+  {
+    img: pg,
+    name: "PG-Booking Dashboard",
+    desc: "An interactive dashboard to manage PG bookings, tenants, and payments efficiently.",
+    langs: "React , Tailwind CSS",
+    link: "https://github.com/Yadhidya/pg-dashboard",
+  },
+  {
+    img: Nike,
+    name: "Nike Landing Page Clone",
+    desc: "A modern clone of the Nike landing page with responsive layout and animations.",
+    langs: "React , Tailwind CSS",
+    link: "https://github.com/Yadhidya/Nike-landing-page-clone",
+  },
+  // You can add more projects below
+];
 
 const Projects = () => {
-  const projects = [
-    {
-      img: work_wagon,
-      name: "Work wagon",
-      desc: "A web platform connecting job seekers and local shops. Includes real-time job updates and transparent status tracking.",
-      langs: "HTML , CSS , JavaScript , PHP",
-      link: "https://github.com/Yadhidya/Work-Wagon",
-    },
-    {
-      img: Face,
-      name: "Face Security Management",
-      desc: "Facial recognition-based security management system for secure and authorized access.",
-      langs: "C# , OpenCV , EmguCV , .NET",
-      link: "https://github.com/Yadhidya/Face-Face-Detection-Security-System",
-    },
-    {
-      img: pg,
-      name: "PG-Booking Dashboard",
-      desc: "An interactive dashboard to manage PG bookings, tenants, and payments efficiently.",
-      langs: "React , Tailwind CSS",
-      link: "https://github.com/Yadhidya/pg-dashboard",
-    },
-    {
-      img: Nike,
-      name: "Nike Landing Page Clone",
-      desc: "A modern clone of the Nike landing page with responsive layout and animations.",
-      langs: "React , Tailwind CSS",
-      link: "https://github.com/Yadhidya/Nike-landing-page-clone",
-    },
-  ];
+  const [visibleCount, setVisibleCount] = useState(2); // Show 2 initially
+  const containerRef = useRef(null);
+
+  const handleToggle = () => {
+    if (visibleCount >= projects.length) {
+      setVisibleCount(2);
+      containerRef.current.scrollIntoView({ behavior: "smooth" });
+    } else {
+      setVisibleCount((prev) => Math.min(prev + 2, projects.length));
+    }
+  };
 
   return (
-    <div className="w-full px-4 sm:px-6 md:px-10 pb-12">
+    <div ref={containerRef} className="w-full px-4 sm:px-6 md:px-10 pb-12">
       <div className="flex flex-wrap justify-center gap-10">
-        {projects.map((project, index) => (
+        {projects.slice(0, visibleCount).map((project, index) => (
           <div
             key={index}
             className="group w-full sm:w-[48%] md:w-[31%] max-w-sm border border-gray-700 bg-zinc-900 p-5 rounded-lg shadow-lg transform transition duration-300 hover:border-indigo-700 hover:scale-105 hover:shadow-xl"
@@ -63,6 +77,17 @@ const Projects = () => {
           </div>
         ))}
       </div>
+
+      {projects.length > 2 && (
+        <div className="mt-8 text-center">
+          <button
+            onClick={handleToggle}
+            className="px-6 py-2 text-white bg-indigo-600 hover:bg-indigo-700 rounded transition"
+          >
+            {visibleCount >= projects.length ? "View Less" : "View More"}
+          </button>
+        </div>
+      )}
     </div>
   );
 };

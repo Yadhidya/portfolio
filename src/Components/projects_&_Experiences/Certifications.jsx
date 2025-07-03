@@ -1,9 +1,36 @@
+import { useState, useRef } from "react";
+import { FaFileAlt } from "react-icons/fa";
+import hacker from "../images/certficates/hacker.png";
 import skilhacc from "../images/certficates/skillhacc.png";
 import cisco from "../images/certficates/cisco.png";
 import Springboard from "../images/certficates/springboard.avif";
-import { FaFileAlt } from "react-icons/fa";
 
 const certfications = [
+  {
+    img: hacker,
+    platform: "HackerRank",
+    name: "Java (Basic)",
+    desc: "Earned the Java (Basic) certification by demonstrating fundamental programming skills and object-oriented principles.",
+    domain: "Programming",
+    link: "https://www.hackerrank.com/certificates/a9c4385a0d2f",
+  },
+  {
+    img: hacker,
+    platform: "HackerRank",
+    name: "SQL (Basic)",
+    desc: "Certified in SQL (Basic) for demonstrating skills in data retrieval, filtering, sorting, and basic joins.",
+    domain: "Databases",
+    link: "https://www.hackerrank.com/certificates/8841d44f1395",
+  },
+  {
+    img: hacker,
+    platform: "HackerRank",
+    name: "Problem Solving (Basic)",
+    desc: "Verified skills in logical reasoning, basic algorithmic techniques, and problem-solving fundamentals.",
+    domain: "Data Structures & Algorithms",
+    link: "https://www.hackerrank.com/certificates/6736ba22abf9",
+   
+  },
   {
     img: skilhacc,
     platform: "Skillhacc",
@@ -63,10 +90,24 @@ const certfications = [
 ];
 
 const Certifications = () => {
+  const [visibleCount, setVisibleCount] = useState(4);
+  const containerRef = useRef(null);
+
+  const handleToggle = () => {
+    if (visibleCount >= certfications.length) {
+      setVisibleCount(4);
+      containerRef.current.scrollIntoView({ behavior: "smooth" });
+    } else {
+      setVisibleCount((prev) =>
+        Math.min(prev + 4, certfications.length)
+      );
+    }
+  };
+
   return (
-    <div className="w-full px-4 sm:px-6 md:px-10 pb-12">
+    <div ref={containerRef} className="w-full px-4 sm:px-6 md:px-10 pb-12">
       <div className="flex flex-wrap justify-center gap-10">
-        {certfications.map((cert, index) => (
+        {certfications.slice(0, visibleCount).map((cert, index) => (
           <div
             key={index}
             className="group w-full sm:w-[48%] md:w-[31%] max-w-sm border border-gray-700 bg-zinc-900 p-5 rounded-lg shadow-lg transform transition duration-300 hover:border-indigo-700 hover:scale-105 hover:shadow-xl"
@@ -85,7 +126,11 @@ const Certifications = () => {
 
             {cert.link && (
               <a
-                href={`${import.meta.env.BASE_URL}${cert.link}`}
+                href={
+                  cert.link.startsWith("http")
+                    ? cert.link
+                    : `${import.meta.env.BASE_URL}${cert.link}`
+                }
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -98,6 +143,17 @@ const Certifications = () => {
           </div>
         ))}
       </div>
+
+      {certfications.length > 4 && (
+        <div className="mt-8 text-center">
+          <button
+            onClick={handleToggle}
+            className="px-6 py-2 text-white bg-indigo-600 hover:bg-indigo-700 rounded transition"
+          >
+            {visibleCount >= certfications.length ? "View Less" : "View More"}
+          </button>
+        </div>
+      )}
     </div>
   );
 };

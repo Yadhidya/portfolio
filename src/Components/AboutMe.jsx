@@ -57,8 +57,8 @@ const AboutMe = () => {
         </div>
 
         <p className="text-base sm:text-lg md:text-xl leading-relaxed text-gray-300 mt-6 max-w-md mx-auto md:mx-0">
-          I'm a passionate Frontend Developer dedicated to crafting responsive, intuitive, and visually engaging web experiences.
-          This portfolio reflects my skills, creativity, and continuous growth in the web development journey.
+        I’m a Frontend Developer focused on building responsive and user-friendly web interfaces. With a strong foundation in Data Structures and Algorithms, I aim to write efficient, maintainable code.
+This portfolio showcases my journey through design, development, and continuous learning in both frontend technologies and core programming concepts.
         </p>
 
         <button
