@@ -29,7 +29,6 @@ const certfications = [
     desc: "Verified skills in logical reasoning, basic algorithmic techniques, and problem-solving fundamentals.",
     domain: "Data Structures & Algorithms",
     link: "https://www.hackerrank.com/certificates/6736ba22abf9",
-   
   },
   {
     img: skilhacc,
@@ -70,59 +69,43 @@ const certfications = [
     desc: "Explored key AWS services with a focus on IAM, encryption, and data privacy best practices.",
     domain: "Cloud Computing & Security",
     link: "/certifcate_links/aws.pdf",
-  },
-  {
-    img: Springboard,
-    platform: "Infosys Springboard",
-    name: "Networking Fundamentals",
-    desc: "Understood core networking topics including DNS, DHCP, IP addressing, subnetting, and basic network troubleshooting.",
-    domain: "Networking",
-    link: "/certifcate_links/networking.pdf",
-  },
-  {
-    img: Springboard,
-    platform: "Infosys Springboard",
-    name: "Data Structures & Algorithms in Python: Sorting Algorithms",
-    desc: "Implemented sorting algorithms such as Bubble Sort, Merge Sort, and Quick Sort using Python.",
-    domain: "Programming & DSA",
-    link: "/certifcate_links/DSA.pdf",
-  },
+  },{ img: Springboard, platform: "Infosys Springboard", name: "Fine Tuning Large Language Models", desc: "Explored the concept and need for fine-tuning LLMs. Demonstrated fine-tuning of remote and local models and evaluated performance of fine-tuned models.", domain: "Artificial Intelligence", link: "/certifcate_links/llm2.pdf", }, { img: Springboard, platform: "Infosys Springboard", name: "Behavior of Large Language Models", desc: "Learned how LLMs behave when applied to real-world problems, including their capabilities, biases, harms, and associated ethical considerations.", domain: "Artificial Intelligence", link: "/certifcate_links/llm1.pdf", },
 ];
 
 const Certifications = () => {
-  const [visibleCount, setVisibleCount] = useState(4);
+  const [visibleCount, setVisibleCount] = useState(3); // initially 3 visible
   const containerRef = useRef(null);
 
   const handleToggle = () => {
     if (visibleCount >= certfications.length) {
-      setVisibleCount(4);
+      setVisibleCount(3); // reset to 3
       containerRef.current.scrollIntoView({ behavior: "smooth" });
     } else {
-      setVisibleCount((prev) =>
-        Math.min(prev + 4, certfications.length)
-      );
+      setVisibleCount((prev) => Math.min(prev + 3, certfications.length));
     }
   };
 
   return (
     <div ref={containerRef} className="w-full px-4 sm:px-6 md:px-10 pb-12">
-      <div className="flex flex-wrap justify-center gap-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 lg:gap-8 justify-items-center">
         {certfications.slice(0, visibleCount).map((cert, index) => (
           <div
             key={index}
-            className="group w-full sm:w-[48%] md:w-[31%] max-w-sm border border-gray-700 bg-zinc-900 p-5 rounded-lg shadow-lg transform transition duration-300 hover:border-indigo-700 hover:scale-105 hover:shadow-xl"
+            className="group w-full max-w-sm border border-gray-700 bg-zinc-900 p-5 rounded-xl shadow-lg flex flex-col justify-between transform transition duration-300 hover:border-indigo-700 hover:scale-105 hover:shadow-xl"
           >
-            <img
-              src={cert.img}
-              alt={`${cert.name} preview`}
-              className="w-full h-40 object-cover rounded-md group-hover:opacity-90 transition duration-300"
-            />
-            <p className="text-lg font-semibold mt-4 text-indigo-400 group-hover:text-indigo-700 transition duration-300">
-              {cert.platform}
-            </p>
-            <p className="text-lg text-gray-300 mb-1">{cert.name}</p>
-            <p className="text-sm text-gray-300 mb-2">{cert.desc}</p>
-            <p className="text-sm text-gray-400 italic">{cert.domain}</p>
+            <div>
+              <img
+                src={cert.img}
+                alt={`${cert.name} preview`}
+                className="w-full h-40 object-cover rounded-md group-hover:opacity-90 transition duration-300"
+              />
+              <p className="text-lg font-semibold mt-4 text-indigo-400 group-hover:text-indigo-600 transition duration-300">
+                {cert.platform}
+              </p>
+              <p className="text-lg text-gray-300 mb-1">{cert.name}</p>
+              <p className="text-sm text-gray-300 mb-2">{cert.desc}</p>
+              <p className="text-sm text-gray-400 italic">{cert.domain}</p>
+            </div>
 
             {cert.link && (
               <a
@@ -133,9 +116,10 @@ const Certifications = () => {
                 }
                 target="_blank"
                 rel="noopener noreferrer"
+                className="mt-4"
               >
-                <button className="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">
-                  <FaFileAlt className="inline-block mr-2" />
+                <button className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">
+                  <FaFileAlt />
                   View Certificate
                 </button>
               </a>
@@ -144,7 +128,7 @@ const Certifications = () => {
         ))}
       </div>
 
-      {certfications.length > 4 && (
+      {certfications.length > 3 && (
         <div className="mt-8 text-center">
           <button
             onClick={handleToggle}

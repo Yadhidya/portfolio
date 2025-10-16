@@ -40,15 +40,17 @@ const cardVariants = {
 const Skills = () => {
   return (
     <section id="skills" className="w-full py-16 px-4 bg-black text-white">
+      {/* Section Heading */}
       <motion.h2
         initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
+        whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         className="text-4xl sm:text-5xl font-bold text-center text-gray-100 mb-12"
       >
         Skills
       </motion.h2>
 
+      {/* Skill Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-6xl mx-auto px-2">
         {categories.map((cat, idx) => (
           <motion.div
@@ -57,17 +59,27 @@ const Skills = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
-            className="bg-zinc-900 border border-gray-700 rounded-2xl p-6 shadow-md hover:border-indigo-800 hover:scale-105 hover:shadow-xl transition duration-300"
+            className="bg-zinc-900 border border-gray-700 rounded-2xl p-6 shadow-md hover:border-indigo-500 hover:scale-105 hover:shadow-indigo-500/50 transition duration-300 relative overflow-hidden"
           >
-            <div className="flex items-center gap-2 mb-4 text-xl sm:text-2xl font-bold text-indigo-400">
+            {/* Animated Icon Background */}
+            <motion.div
+              className="absolute -top-6 -right-6 w-24 h-24 bg-indigo-500/10 rounded-full blur-3xl"
+              animate={{ rotate: 360 }}
+              transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+            />
+
+            {/* Category Header */}
+            <div className="flex items-center gap-2 mb-4 text-xl sm:text-2xl font-bold text-indigo-400 relative z-10">
               {cat.icon}
               <h3>{cat.title}</h3>
             </div>
-            <ul className="flex flex-wrap gap-3 text-sm sm:text-base md:text-lg">
+
+            {/* Skill Items */}
+            <ul className="flex flex-wrap gap-3 text-sm sm:text-base md:text-lg relative z-10">
               {cat.items.map((item, i) => (
                 <li
                   key={i}
-                  className="px-4 py-2 border border-indigo-900 rounded-full whitespace-nowrap"
+                  className="px-4 py-2 border border-indigo-900 rounded-full whitespace-nowrap bg-indigo-900/20 hover:bg-indigo-700/50 transition duration-300"
                 >
                   {item}
                 </li>

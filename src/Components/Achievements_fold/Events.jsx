@@ -7,6 +7,10 @@ import codeathon from "../images/awards/codeathon.png";
 import comsci from "../images/awards/comsci.jpg";
 import btech from "../images/awards/btech_wallah.png";
 import Aincat from "../images/awards/AINCAT.png";
+import tvs from "../images/awards/tvs.png";
+import crave from "../images/awards/crave.png";
+import adobe from "../images/awards/adobe.png";
+import blind from "../images/awards/blind.png";
 
 const Events = () => {
   const containerRef = useRef(null);
@@ -37,6 +41,23 @@ const Events = () => {
       desc: "Won the technical quiz competition based on Google Forms, coding by scoring highest among 40+ members.",
       memento: "/awards_links/technicalQuiz.jpg"
     },
+     {
+    img: codeathon,
+    name: "Codeathon August Edition",
+    organized: "Veltech University",
+    prize: "3rd Place",
+    desc: "Secured 3rd place in an inter-college coding competition, demonstrating strong problem-solving and coding skills among a competitive field.",
+    memento: "/awards_links/codeathon_aug.jpg"
+  },
+  
+  {
+    img: blind,
+    name: "Blind Coding Contest",
+    organized: "Veltech University",
+    prize: "2nd Place",
+    desc: "Secured 2nd prize in a unique coding challenge with monitors turned off. Tested coding skills, mental focus, and performance under unusual conditions.",
+    memento: "/awards_links/blind.jpg"
+  },
     {
   img: lets, 
   name: "CodeClash – The Battle of Logic & Code",
@@ -45,6 +66,30 @@ const Events = () => {
   desc: "Received a Certificate of Excellence for showcasing grit, logical thinking, and consistent effort in CodeClash hosted on Unstop.",
   memento: "https://unstop.com/certificate-preview/4d28c274-b2a6-4efa-840a-b20c81227f79"
 },
+{
+    img: tvs,
+    name: "TVS Credit E.P.I.C 7.0 — IT Challenge",
+    organized: "TVS Credit",
+    prize: "Participation",
+    desc: "Participated in the online assessment. Tackled Dynamic Programming problems, enhancing problem-solving skills and gaining valuable experience.",
+    memento: "https://unstop.com/certificate-preview/5aa3eb3c-7ced-41ee-b6fb-d72670bb9ceb"
+  },
+  {
+    img: adobe,
+    name: "Adobe India Hackathon",
+    organized: "Adobe India",
+    prize: "Participation",
+    desc: "Participated in the first round consisting of 15 MCQs and 1 coding question. Gained insights and identified areas to improve for future hackathons.",
+    memento: "https://unstop.com/certificate-preview/634cb77c-6028-4ac0-ac04-e1f00d91922d"
+  },
+  {
+    img: crave,
+    name: "Crave the Code",
+    organized: "College Crave",
+    prize: "Top 200 Teams",
+    desc: "Qualified for Round 2 of the online hackathon focused on open innovation. Developed ideas and prototype, placing among the top 200 out of 800 teams.",
+    memento: "https://unstop.com/certificate-preview/c4f92899-ca28-4998-ae28-9c8ff85c3375"
+  },
 {
   img: dev, 
   name: "CodeRush Weekly",

@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaTimes, FaBars } from "react-icons/fa";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
 
   const navLinks = [
     { id: "about_me", label: "About me" },
@@ -14,10 +15,33 @@ const Header = () => {
     { id: "contact_me", label: "Contact" },
   ];
 
+  // Track section in viewport for active link
+  useEffect(() => {
+    const handleScroll = () => {
+      navLinks.forEach((link) => {
+        const section = document.getElementById(link.id);
+        if (section) {
+          const top = section.offsetTop - 100;
+          const bottom = top + section.offsetHeight;
+          if (window.scrollY >= top && window.scrollY < bottom) {
+            setActiveSection(link.id);
+          }
+        }
+      });
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const menuVariants = {
     hidden: { opacity: 0, y: -20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.3 } },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.3, staggerChildren: 0.05 } },
     exit: { opacity: 0, y: -20, transition: { duration: 0.2 } },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: -10 },
+    visible: { opacity: 1, y: 0 },
   };
 
   return (
@@ -25,11 +49,17 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 py-4 flex justify-between items-center">
         <h2 className="text-2xl sm:text-3xl font-bold text-slate-100">Yadhidya</h2>
 
+        {/* Desktop Navigation */}
         <nav className="hidden md:block">
           <ul className="flex gap-6 text-base lg:text-lg font-medium text-gray-200">
             {navLinks.map((link) => (
               <li key={link.id}>
-                <a href={`#${link.id}`} className="hover:text-indigo-400 transition">
+                <a
+                  href={`#${link.id}`}
+                  className={`transition duration-300 hover:text-indigo-400 ${
+                    activeSection === link.id ? "text-indigo-400 font-semibold" : ""
+                  }`}
+                >
                   {link.label}
                 </a>
               </li>
@@ -37,6 +67,7 @@ const Header = () => {
           </ul>
         </nav>
 
+        {/* Mobile Menu Toggle */}
         <div
           className="md:hidden text-white text-2xl cursor-pointer z-50"
           onClick={() => setIsOpen((prev) => !prev)}
@@ -45,6 +76,7 @@ const Header = () => {
         </div>
       </div>
 
+      {/* Mobile Navigation */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -54,19 +86,21 @@ const Header = () => {
             animate="visible"
             exit="exit"
           >
-            <ul className="flex flex-col gap-4 text-lg">
+            <motion.ul className="flex flex-col gap-4 text-lg">
               {navLinks.map((link) => (
-                <li key={link.id}>
+                <motion.li key={link.id} variants={itemVariants}>
                   <a
                     href={`#${link.id}`}
                     onClick={() => setIsOpen(false)}
-                    className="block border-b border-gray-700 pb-2 hover:text-indigo-400 transition"
+                    className={`block border-b border-gray-700 pb-2 transition duration-300 hover:text-indigo-400 ${
+                      activeSection === link.id ? "text-indigo-400 font-semibold" : ""
+                    }`}
                   >
                     {link.label}
                   </a>
-                </li>
+                </motion.li>
               ))}
-            </ul>
+            </motion.ul>
           </motion.div>
         )}
       </AnimatePresence>
