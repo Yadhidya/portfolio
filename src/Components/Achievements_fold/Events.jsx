@@ -13,6 +13,7 @@ import adobe from "../images/awards/adobe.png";
 import blind from "../images/awards/blind.png";
 import pi_pro from "../images/awards/PI_pro.jpeg";
 import velamal from "../images/awards/velamal.jpeg";
+import iit_reverse from "../images/awards/reverse_coding.jpg";
 
 const Events = () => {
   const containerRef = useRef(null);
@@ -108,7 +109,15 @@ const Events = () => {
       level: "third",
       desc: "Secured 3rd place in a competitive coding event showcasing strong problem-solving skills.",
       memento: "/awards_links/codeathon_aug.jpg"
-    },
+    },{
+  img: iit_reverse,
+  name: "Reverse Coding X",
+  organized: "Shaastra 2026 – IIT Madras",
+  prize: "Participation",
+  level: "participation",
+  desc: "Participated in Reverse Coding X at IIT Madras where problems were presented without descriptions. Inputs and expected outputs were provided via a Telnet terminal.",
+  memento: "/awards_links/reverse_coding.jpg"
+},
     
     {
       img: lets,
@@ -191,41 +200,57 @@ const Events = () => {
             const badge = getBadge(event.level);
 
             return (
-              <div
+             <div
   key={index}
-  className="relative w-full sm:w-[48%] md:w-[30%] bg-zinc-900/70 backdrop-blur-md p-6 rounded-2xl shadow-xl border border-zinc-700 hover:shadow-2xl transition duration-300 overflow-hidden group"
+  className="relative w-full sm:w-[48%] md:w-[30%] 
+             bg-zinc-900/70 backdrop-blur-md 
+             p-6 pt-14 
+             rounded-2xl shadow-xl 
+             border border-zinc-700 
+             hover:shadow-2xl 
+             transition duration-300 
+             overflow-hidden 
+             flex flex-col"
 >
-  {/* 🎖 Ribbon Badge - Top Left Cross Style */}
+  {/* 🎖 Ribbon Badge */}
   <div
-    className={`absolute -top-3 -left-10 rotate-[-45deg] w-40 text-center py-1 text-xs font-bold text-white shadow-lg ${badge.color}`}
+    className={`absolute -top-4 -left-12 rotate-[-45deg] 
+                w-48 text-center py-2 
+                text-sm font-bold text-white 
+                shadow-lg ${badge.color}`}
   >
     {badge.label}
   </div>
 
   {/* Event Logo + Title */}
-  <div className="flex items-center gap-4 mb-4 mt-6">
+  <div className="flex items-center gap-4 mb-4">
     <img
       src={event.img}
       alt={event.name}
-      className="w-[65px] h-[65px] object-contain rounded-lg bg-white p-1 shadow-md"
+      className="w-[65px] h-[65px] object-contain 
+                 rounded-lg bg-white p-1 shadow-md"
     />
-    <h3 className="text-lg font-bold text-white group-hover:text-indigo-400 transition">
+    <h3 className="text-lg font-bold text-white leading-tight">
       {event.name}
     </h3>
   </div>
 
+  {/* Organized */}
   <p className="text-sm text-gray-400 mb-1">
     {event.organized}
   </p>
 
-  <p className="text-sm font-semibold text-indigo-400 mb-3">
+  {/* Prize */}
+  <p className="text-base font-semibold text-indigo-400 mb-3">
     {event.prize}
   </p>
 
-  <p className="text-sm text-gray-300 mb-5 leading-relaxed">
+  {/* Description (Pushes button down) */}
+  <p className="text-sm text-gray-300 leading-relaxed flex-grow">
     {event.desc}
   </p>
 
+  {/* Button aligned at bottom */}
   {event.memento && (
     <a
       href={
@@ -235,8 +260,12 @@ const Events = () => {
       }
       target="_blank"
       rel="noopener noreferrer"
+      className="mt-6"
     >
-      <button className="w-full px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition text-sm font-medium">
+      <button className="w-full py-3 bg-indigo-600 
+                         hover:bg-indigo-700 
+                         text-white rounded-lg 
+                         transition text-sm font-medium">
         <FaFileAlt className="inline-block mr-2" />
         View Certificate
       </button>

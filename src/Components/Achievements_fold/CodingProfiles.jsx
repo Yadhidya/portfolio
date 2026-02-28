@@ -7,42 +7,42 @@ const codingProfiles = [
     username: "yadhidya",
     link: "https://leetcode.com/u/yadhidya/",
     image: "https://upload.wikimedia.org/wikipedia/commons/1/19/LeetCode_logo_black.png",
-    description: "Practicing DSA problems and preparing for coding interviews.",
-    statsType: "image",
-    statsAPI: "https://leetcard.jacoblin.cool/yadhidya?theme=dark&ext=png"
+    description: "Practicing DSA problems and preparing for coding interviews."
+  }, 
+  {
+    name: "Code Forces",
+    username: "yadhidya",
+    link: "https://codeforces.com/profile/yadhidya",
+    image: "https://s3.amazonaws.com/codeforces_shared/sites/all/themes/abessive/cc-logo.png",
+    description: "Participated in contests and improved competitive programming skills."
   },
   {
     name: "CodeChef",
     username: "yadhidya_1",
     link: "https://www.codechef.com/users/yadhidya_1",
     image: "https://s3.amazonaws.com/codechef_shared/sites/all/themes/abessive/cc-logo.png",
-    description: "Participated in contests and improved competitive programming skills.",
-    statsType: "api",
-    statsAPI: "https://competitive-coding-api.vercel.app/api/codechef/yadhidya_1"
+    description: "Participated in contests and improved competitive programming skills."
   },
   {
     name: "GeeksforGeeks",
     username: "ulliyadhitcht",
     link: "https://auth.geeksforgeeks.org/user/ulliyadhitcht",
     image: "https://media.geeksforgeeks.org/wp-content/uploads/20210101144014/gfglogo.png",
-    description: "Problem solving and contributing to articles.",
-    statsType: "none"
+    description: "Problem solving and contributing to articles."
   },
   {
     name: "Coding Ninjas",
     username: "yadhidya",
     link: "https://www.codingninjas.com/studio/profile/yadhidya",
     image: "https://assets.codingninjas.com/logo.png",
-    description: "Completed challenges on CodeStudio.",
-    statsType: "none"
+    description: "Completed challenges on CodeStudio."
   },
   {
     name: "HackerRank",
     username: "ulliyadhidya6002",
     link: "https://www.hackerrank.com/ulliyadhidya6002",
     image: "https://upload.wikimedia.org/wikipedia/commons/6/65/HackerRank_logo.png",
-    description: "Earned badges in Problem Solving, SQL, and Java.",
-    statsType: "none"
+    description: "Earned badges in Problem Solving, SQL, and Java."
   },
 ];
 
