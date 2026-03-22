@@ -7,9 +7,9 @@ const Header = () => {
   const [activeSection, setActiveSection] = useState("");
 
   const navLinks = [
-    { id: "about_me", label: "About me" },
+    { id: "about_me", label: "About" },
     { id: "skills", label: "Skills" },
-    { id: "CareerHighlights", label: "Career Highlights" },
+    { id: "CareerHighlights", label: "Career" },
     { id: "Achievements", label: "Achievements" },
     { id: "education", label: "Education" },
     { id: "contact_me", label: "Contact" },

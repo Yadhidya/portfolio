@@ -6,7 +6,7 @@ import { FaFileAlt } from "react-icons/fa";
 const AboutMe = () => {
   const roles = [
     "Competitive Programmer",
-    "Frontend Developer",
+    "Web Developer",
     "Video Editor"
   ];
 
@@ -56,9 +56,14 @@ const AboutMe = () => {
           </AnimatePresence>
         </div>
 
-        <p className="text-base sm:text-lg md:text-xl leading-relaxed text-gray-300 mt-6 max-w-md mx-auto md:mx-0">
-        I’m a Frontend Developer focused on building responsive and user-friendly web interfaces. With a strong foundation in Data Structures and Algorithms, I aim to write efficient, maintainable code.
-This portfolio showcases my journey through design, development, and continuous learning in both frontend technologies and core programming concepts.
+        <p className="text-gray-300 text-base sm:text-lg mt-6 leading-relaxed max-w-lg">
+          I build responsive and scalable web applications with a strong focus
+          on clean architecture and performance. With a solid foundation in
+          <span className="text-indigo-400 font-medium">
+            {" "}Data Structures and Algorithms
+          </span>
+          , I enjoy solving complex problems and turning ideas into reliable
+          software solutions.
         </p>
 
         <button
